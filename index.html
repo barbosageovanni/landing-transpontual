@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Transpontual Express — Logística de óleo &amp; gás em Macaé (resposta em 15 min)</title>
+  <meta name="description" content="Transporte de óleo &amp; gás com segurança auditada, rastreamento 24/7 e base em Macaé. Diagnóstico em 15 min e plano em até 48h." />
+  <link rel="canonical" href="https://www.transpontualexpress.com/landing-oil-gas-macae" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Transpontual Express — Logística de óleo &amp; gás em Macaé" />
+  <meta property="og:description" content="Segurança auditada, rastreamento 24/7, SLA e equipe dedicada. Diagnóstico em 15 min." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.transpontualexpress.com/landing-oil-gas-macae" />
+  <meta property="og:image" content="assets/img/og-oil-gas.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Schema: Organization + LocalBusiness + Service + FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"Transpontual Express",
+    "image":"https://www.transpontualexpress.com/og-oil-gas.jpg",
+    "url":"https://www.transpontualexpress.com/landing-oil-gas-macae",
+    "telephone":"+55-22-98154-4419",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"Rua Offshore 210",
+      "addressLocality":"Macaé",
+      "addressRegion":"RJ",
+      "postalCode":"27900-000",
+      "addressCountry":"BR"
+    },
+    "openingHours":["Mo-Su 00:00-23:59"],
+    "areaServed":"Bacia de Campos",
+    "makesOffer":{
+      "@type":"Offer",
+      "itemOffered":{
+        "@type":"Service",
+        "name":"Transporte de óleo & gás (onshore/offshore)"
+      },
+      "availability":"https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"O que é SASSMAQ?","acceptedAnswer":{"@type":"Answer","text":"Sistema da ABIQUIM para avaliar segurança, saúde, meio ambiente e qualidade no transporte de produtos perigosos."}},
+      {"@type":"Question","name":"Atendem produtos perigosos/controle?","acceptedAnswer":{"@type":"Answer","text":"Conforme contrato e documentação do embarcador; seguimos exigências legais e QSMS."}},
+      {"@type":"Question","name":"Operam no BMAC?","acceptedAnswer":{"@type":"Answer","text":"Planejamento alinhado às janelas de atracação e integração porto-base-plataforma."}},
+      {"@type":"Question","name":"Quais seguros?","acceptedAnswer":{"@type":"Answer","text":"RCTR-C e RC Carga, conforme escopo. Solicite apólices e limites via RFI."}}
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero" role="banner" aria-label="Transpontual Express - Hero">
+    <div class="wrap">
+      <h1>Transporte de óleo &amp; gás com pontualidade total em Macaé</h1>
+      <p>Segurança auditada, rastreamento contínuo 24/7 e equipe dedicada. Integração porto-base-plataforma e janelas de atracação do BMAC.</p>
+      <div class="meta">
+        <span class="badge">⏱️ Resposta em até 15 min</span>
+        <span class="badge">📍 Base em Macaé</span>
+        <span class="badge">✅ SLA: 99,4% no prazo*</span>
+      </div>
+      <div class="cta-group">
+        <a class="btn btn--primary" href="#cotacao">Agendar diagnóstico 15min</a>
+        <a class="btn btn--ghost" href="#servicos">Ver serviços</a>
+        <a class="btn btn--white" id="cta-whatsapp-top" href="#">Cotar via WhatsApp</a>
+      </div>
+
+      <!-- FORM LEAD MULTIPASSOS -->
+      <div id="cotacao" class="leadbox">
+        <div class="steps">Passo <span id="stepNow">1</span> de 3</div>
+        <div class="progress"><span id="progressBar" style="width:33%"></span></div>
+
+        <!-- passo 1 -->
+        <div class="step" data-step="1">
+          <label for="necessidade">Qual é a sua necessidade?</label>
+          <select id="necessidade" required>
+            <option value="">Selecione</option>
+            <option>Transporte urgente (D+0/D+1)</option>
+            <option>Campanha/Projeto (turnkey)</option>
+            <option>Produtos perigosos/Resíduos</option>
+            <option>Container/Peças especiais</option>
+            <option>Outro</option>
+          </select>
+
+          <div class="row">
+            <div>
+              <label for="origem">Origem</label>
+              <input id="origem" placeholder="Ex.: Macaé/Imbetiba (BMAC)" required />
+            </div>
+            <div>
+              <label for="destino">Destino</label>
+              <input id="destino" placeholder="Ex.: Base onshore/plataforma" required />
+            </div>
+          </div>
+          <div class="actions"><button class="btn btn--primary" id="next1">Próximo</button></div>
+        </div>
+
+        <!-- passo 2 -->
+        <div class="step hidden" data-step="2">
+          <div class="row">
+            <div>
+              <label for="tipoCarga">Tipo de carga</label>
+              <input id="tipoCarga" required />
+            </div>
+            <div>
+              <label for="dataColeta">Data prevista</label>
+              <input id="dataColeta" type="date" required />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label for="peso">Peso</label>
+              <input id="peso" />
+            </div>
+            <div>
+              <label for="observacoes">Observações</label>
+              <input id="observacoes" />
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn btn--white" id="back2">Voltar</button>
+            <button class="btn btn--primary" id="next2">Próximo</button>
+          </div>
+        </div>
+
+        <!-- passo 3 -->
+        <div class="step hidden" data-step="3">
+          <div class="row">
+            <div>
+              <label for="nome">Seu nome</label>
+              <input id="nome" required />
+            </div>
+            <div>
+              <label for="empresa">Empresa</label>
+              <input id="empresa" required />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label for="email">E-mail</label>
+              <input id="email" type="email" required />
+            </div>
+            <div>
+              <label for="fone">Telefone/WhatsApp</label>
+              <input id="fone" inputmode="tel" required />
+            </div>
+          </div>
+          <label><input type="checkbox" id="lgpd" required /> Autorizo contato conforme LGPD.</label>
+          <div class="actions">
+            <button class="btn btn--white" id="back3">Voltar</button>
+            <button class="btn btn--primary" id="enviarLead">Enviar</button>
+            <button class="btn btn--primary" id="enviarWhats">Enviar pelo WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONFIANÇA -->
+  <section class="trust" aria-labelledby="sec-confianca">
+    <div class="wrap">
+      <h2 id="sec-confianca">Por que Macaé confia na Transpontual Express</h2>
+      <p>Mais que transporte, entregamos <strong>tranquilidade operacional</strong> alinhada às exigências do setor de petróleo: integração porto-base-plataforma, janelas de atracação, risco monitorado e comunicação 24/7.</p>
+      <div class="cta-group">
+        <a class="btn btn--primary" href="#cotacao" aria-label="Falar com um especialista em logística">Fale com um especialista</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section class="benefits" aria-labelledby="sec-beneficios">
+    <div class="wrap">
+      <h2 id="sec-beneficios">Benefícios e diferenciais que evitam interrupções</h2>
+      <ul>
+        <li>Rastreamento 24/7 e <strong>gerenciamento de risco</strong> com alertas de rota e paradas não programadas.</li>
+        <li>Gestor dedicado por contrato, com <strong>SLA de resposta de 5 min</strong> e central de operações 24h.</li>
+        <li>Planejamento integrado porto-base-plataforma que reduz <strong>custos de mobilização</strong> e espera.</li>
+        <li>Equipamentos inspecionados (ex.: <strong>CIPP/Inmetro</strong>) e manutenção preditiva conforme ANTT.</li>
+        <li>Protocolos de contingência que asseguram <strong>99,4% de entregas no prazo*</strong> em cenários críticos.</li>
+        <li>Seguros: <strong>RCTR-C</strong> e <strong>RC Carga</strong> (quando aplicável).</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section class="services" id="servicos" aria-labelledby="sec-servicos">
+    <div class="wrap">
+      <h2 id="sec-servicos">Serviços especializados para operações de petróleo em Macaé</h2>
+      <div class="service-grid">
+        <article class="card">
+          <h3>Transporte rodoviário dedicado (onshore/offshore)</h3>
+          <p>Cargas perigosas, peças especiais e materiais sensíveis com protocolos ADR e equipe treinada.</p>
+        </article>
+        <article class="card">
+          <h3>Movimentação integrada porto-base-plataforma</h3>
+          <p>Sincronização com <strong>janelas de atracação</strong> e turnos embarcados para eliminar esperas.</p>
+        </article>
+        <article class="card">
+          <h3>Inbound de suprimentos críticos</h3>
+          <p>Consolidação, cross-docking e entregas fracionadas com rastreamento de item crítico.</p>
+        </article>
+        <article class="card">
+          <h3>Projetos turnkey de mobilização</h3>
+          <p>Planejamento logístico completo com análise de risco, roteirização e seguro especializado.</p>
+        </article>
+      </div>
+      <div class="cta-group"><a class="btn btn--primary" href="#cotacao">Montar plano sob medida</a></div>
+    </div>
+  </section>
+
+  <!-- PROVA SOCIAL -->
+  <section class="socialproof" aria-labelledby="sec-resultados">
+    <div class="wrap">
+      <h2 id="sec-resultados" style="color:#fff">Resultados que falam por si</h2>
+      <div class="kpis">
+        <div class="kpi">2.800+ viagens críticas concluídas em 12 meses <strong>sem incidentes</strong>.</div>
+        <div class="kpi">Satisfação 4,9/5 entre gestores de logística de empresas petrolíferas na região.</div>
+      </div>
+      <div class="quote">“A Transpontual reduziu nosso ciclo de abastecimento em 22% e manteve zero ocorrências de risco.” — <strong>Juliana Prado</strong>, Coord. Logística Offshore.</div>
+      <span class="highlight" aria-label="Destaque numérico de performance">99,4% entregas no prazo*</span>
+      <p style="opacity:.8;margin-top:8px">*Metodologia e período sob demanda em RFI.</p>
+    </div>
+  </section>
+
+  <!-- GARANTIA / COMPLIANCE -->
+  <section class="guarantee" aria-labelledby="sec-garantia">
+    <div class="wrap">
+      <h2 id="sec-garantia">Compromisso de segurança e prazos</h2>
+      <p>Seguro de carga, data logger nos veículos, auditoria de rotas e <strong>QSMS</strong>.</p>
+      <div class="box" role="note" aria-label="Compromisso de prazo">
+        Se o prazo contratado não for cumprido, assumimos custos adicionais de mobilização e ativamos operação de contingência imediata.
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ REGULATÓRIO -->
+  <section class="services" aria-labelledby="sec-faq">
+    <div class="wrap">
+      <h2 id="sec-faq">FAQ regulatório e de operação</h2>
+      <details>
+        <summary>O que é SASSMAQ e por que importa?</summary>
+        <p>É um sistema da ABIQUIM que avalia prestadores logísticos em segurança, saúde, meio ambiente e qualidade; é amplamente exigido no transporte de produtos perigosos.</p>
+      </details>
+      <details>
+        <summary>Atendem produtos perigosos/controle do Exército/Polícia Federal?</summary>
+        <p>Sim, conforme contrato e documentação do embarcador. Para químicos/controle, seguimos exigências legais e QSMS.</p>
+      </details>
+      <details>
+        <summary>Operam no BMAC (Porto de Imbetiba/Petrobras)?</summary>
+        <p>Planejamento com base na janela de atracação e coordenação porto-base-plataforma para reduzir esperas.</p>
+      </details>
+      <details>
+        <summary>Quais seguros estão incluídos?</summary>
+        <p>RCTR-C e RC Carga (quando aplicável ao escopo). Envie sua RFI para apólices e limites.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="final-cta" aria-labelledby="sec-pronto">
+    <div class="overlay" aria-hidden="true"></div>
+    <div class="wrap">
+      <h2 id="sec-pronto">Pronto para acelerar sua operação?</h2>
+      <p>Garanta um parceiro que entende a urgência e a segurança que sua operação exige.</p>
+      <div class="cta-group">
+        <a class="btn btn--primary" href="#cotacao" aria-label="Agendar diagnóstico logístico">Agendar diagnóstico gratuito</a>
+        <a class="btn btn--white" id="cta-whatsapp-bottom" href="#" aria-label="Cotar via WhatsApp">Cotar via WhatsApp</a>
+      </div>
+      <p style="opacity:.9;margin-top:8px">Retorno em até 15 minutos. Plano em até 48h.</p>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="contact" id="contato" aria-labelledby="sec-contato">
+    <div class="wrap">
+      <h2 id="sec-contato" style="color:var(--azul-escuro)">Contato direto</h2>
+      <div class="grid">
+        <div class="item"><strong>Telefone 24h</strong><br><a href="tel:+552240001234">(22) 98154-4419</a></div>
+        <div class="item"><strong>E-mail</strong><br><a href="mailto:atendimento@transpontualexpress.com">financeiro@transpontualexpress.com.br</a></div>
+        <div class="item"><strong>Endereço operacional</strong><br>Parque Industrial de Macaé, Rua Offshore 210</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA FIXO MOBILE -->
+  <div class="sticky-cta">
+    <a class="btn btn--primary" href="#cotacao">Solicitar operação</a>
+    <a class="btn btn--primary" id="cta-whatsapp-sticky" href="#">WhatsApp</a>
+  </div>
+
+  <!-- Botão flutuante WhatsApp -->
+  <a class="wa-fab" id="wa-fab" href="#">WhatsApp</a>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
