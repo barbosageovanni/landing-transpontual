@@ -72,7 +72,7 @@ function buildLeadMessage() {
 }
 
 // Replace with your WhatsApp number (DDI + DDD + número)
-const waNumber = '5522999999999'; // TODO: definir número real
+const waNumber = '5522981544419'; // TODO: definir número real
 
 function openWhatsApp() {
   const { lines } = buildLeadMessage();
