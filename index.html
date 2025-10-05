@@ -70,7 +70,7 @@
   <!-- HERO -->
   <header class="hero" role="banner" aria-label="Transpontual Express - Hero">
     <div class="wrap">
-      <h1>Transporte de óleo &amp; gás com pontualidade total em Macaé</h1>
+      <h1>Transpontual Express Logística</h1>
       <p>Segurança auditada, rastreamento contínuo 24/7 e equipe dedicada. Integração porto-base-plataforma e janelas de atracação do BMAC.</p>
       <div class="meta">
         <span class="badge">⏱️ Resposta em até 15 min</span>
@@ -97,6 +97,7 @@
             <option>Campanha/Projeto (turnkey)</option>
             <option>Produtos perigosos/Resíduos</option>
             <option>Container/Peças especiais</option>
+            <option>Cargas expressas</option>
             <option>Outro</option>
           </select>
 
@@ -118,7 +119,19 @@
           <div class="row">
             <div>
               <label for="tipoCarga">Tipo de carga</label>
-              <input id="tipoCarga" required />
+              <select id="tipoCarga" required>
+                <option value="">Selecione</option>
+                <option>Transporte urgente (D+0/D+1)</option>
+                <option>Campanha/Projeto (turnkey)</option>
+                <option>Produtos perigosos/Resíduos</option>
+                <option>Container/Peças especiais</option>
+                <option>Cargas expressas</option>
+                <option>Granel (líquido/sólido)</option>
+                <option>Equipamentos offshore</option>
+                <option>Materiais para sondas</option>
+                <option>Tubulações e conexões</option>
+                <option>Outro</option>
+              </select>
             </div>
             <div>
               <label for="dataColeta">Data prevista</label>
@@ -215,11 +228,11 @@
         </article>
         <article class="card">
           <h3>Inbound de suprimentos críticos</h3>
-          <p>Consolidação, cross-docking e entregas fracionadas com rastreamento de item crítico.</p>
+          <p>Consolidação, cross-docking e entregas com rastreamento de item crítico.</p>
         </article>
         <article class="card">
-          <h3>Projetos turnkey de mobilização</h3>
-          <p>Planejamento logístico completo com análise de risco, roteirização e seguro especializado.</p>
+          <h3>Transporte de cargas expressas</h3>
+          <p>Planejamento logístico  para cargas expressas completo com análise de risco, roteirização e seguro especializado.</p>
         </article>
       </div>
       <div class="cta-group"><a class="btn btn--primary" href="#cotacao">Montar plano sob medida</a></div>
@@ -309,6 +322,22 @@
 
   <!-- Botão flutuante WhatsApp -->
   <a class="wa-fab" id="wa-fab" href="#">WhatsApp</a>
+
+  <!-- Modal de Confirmação -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-content">
+      <div class="modal-icon success">
+        <svg class="checkmark" viewBox="0 0 52 52">
+          <path d="M14 27l7.5 7.5L38 18"/>
+        </svg>
+      </div>
+      <h2 class="modal-title">Tudo pronto!</h2>
+      <p class="modal-text">
+        Em breve a gente entra em contato com você. <span class="modal-emoji">😊</span>
+      </p>
+      <button class="modal-btn" id="closeModal">Entendi</button>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="assets/js/main.js"></script>

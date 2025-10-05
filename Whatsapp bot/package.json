@@ -1,0 +1,10 @@
+{
+  "name": "whatsapp-bot",
+  "version": "1.0.0",
+  "main": "bot/index.js",
+  "dependencies": {
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.21.1",
+    "@supabase/supabase-js": "^2.38.0"
+  }
+}

@@ -25,10 +25,51 @@ function showStep(i) {
   if (progressBar) progressBar.style.width = ((i + 1) * 33) + '%';
 }
 
-// Event listeners for next/back buttons
+// Validação de campos
+function validateStep(stepNumber) {
+  const step = steps[stepNumber];
+  const inputs = step.querySelectorAll('input[required], select[required]');
+  let isValid = true;
+
+  inputs.forEach(input => {
+    // Remove estilo de erro anterior
+    input.style.borderColor = '';
+
+    if (!input.value.trim()) {
+      input.style.borderColor = '#ff4444';
+      isValid = false;
+
+      // Adiciona shake animation
+      input.animate([
+        { transform: 'translateX(0)' },
+        { transform: 'translateX(-10px)' },
+        { transform: 'translateX(10px)' },
+        { transform: 'translateX(-10px)' },
+        { transform: 'translateX(0)' }
+      ], {
+        duration: 400,
+        easing: 'ease-in-out'
+      });
+    }
+  });
+
+  if (!isValid) {
+    // Feedback visual
+    const firstInvalid = step.querySelector('input[required]:not([value]), select[required]:not([value])');
+    if (firstInvalid) {
+      firstInvalid.focus();
+    }
+  }
+
+  return isValid;
+}
+
+// Event listeners para next/back buttons com validação
 document.getElementById('next1')?.addEventListener('click', e => {
   e.preventDefault();
-  showStep(1);
+  if (validateStep(0)) {
+    showStep(1);
+  }
 });
 document.getElementById('back2')?.addEventListener('click', e => {
   e.preventDefault();
@@ -36,7 +77,9 @@ document.getElementById('back2')?.addEventListener('click', e => {
 });
 document.getElementById('next2')?.addEventListener('click', e => {
   e.preventDefault();
-  showStep(2);
+  if (validateStep(1)) {
+    showStep(2);
+  }
 });
 document.getElementById('back3')?.addEventListener('click', e => {
   e.preventDefault();
@@ -58,11 +101,11 @@ function buildLeadPayload() {
     empresa: get('empresa'),
     email: get('email'),
     telefone: get('fone'),
-    utm_source: get('utm_source'),
-    utm_medium: get('utm_medium'),
-    utm_campaign: get('utm_campaign'),
-    utm_term: get('utm_term'),
-    utm_content: get('utm_content'),
+    utm_source: params.get('utm_source') || '',
+    utm_medium: params.get('utm_medium') || '',
+    utm_campaign: params.get('utm_campaign') || '',
+    utm_term: params.get('utm_term') || '',
+    utm_content: params.get('utm_content') || '',
     created_at: new Date().toISOString()
   };
 }
@@ -70,15 +113,36 @@ function buildLeadPayload() {
 // Build WhatsApp message text
 function buildWhatsAppText(payload) {
   const lines = [
-    '🚚 *Cotação Transpontual*',
-    `Necessidade: ${payload.necessidade}`,
-    `Origem: ${payload.origem} | Destino: ${payload.destino}`,
-    `Carga: ${payload.tipo_carga} | Data: ${payload.data_coleta} | Peso: ${payload.peso}`,
-    `Obs.: ${payload.observacoes}`,
-    `Contato: ${payload.nome} | ${payload.empresa}`,
-    `E-mail: ${payload.email} | Fone: ${payload.telefone}`,
-    `UTM: ${payload.utm_source}/${payload.utm_medium}/${payload.utm_campaign}`
+    '🚚 *TRANSPONTUAL EXPRESS*',
+    '━━━━━━━━━━━━━━━━━━━━',
+    '*Nova Solicitação de Cotação*',
+    '',
+    '📋 *DETALHES DA OPERAÇÃO*',
+    `• Necessidade: ${payload.necessidade || 'Não informado'}`,
+    `• Origem: ${payload.origem || 'Não informado'}`,
+    `• Destino: ${payload.destino || 'Não informado'}`,
+    '',
+    '📦 *INFORMAÇÕES DA CARGA*',
+    `• Tipo: ${payload.tipo_carga || 'Não informado'}`,
+    `• Data prevista: ${payload.data_coleta || 'Não informado'}`,
+    `• Peso: ${payload.peso || 'Não informado'}`,
+    `• Observações: ${payload.observacoes || 'Nenhuma'}`,
+    '',
+    '👤 *DADOS DE CONTATO*',
+    `• Nome: ${payload.nome}`,
+    `• Empresa: ${payload.empresa}`,
+    `• E-mail: ${payload.email}`,
+    `• Telefone: ${payload.telefone}`,
+    '',
+    '━━━━━━━━━━━━━━━━━━━━',
+    '⏱️ _Aguardando resposta em até 15 minutos_'
   ];
+
+  // Remove UTM se estiver vazio
+  if (payload.utm_source || payload.utm_medium || payload.utm_campaign) {
+    lines.push('', `📊 UTM: ${payload.utm_source}/${payload.utm_medium}/${payload.utm_campaign}`);
+  }
+
   return lines.join('%0A');
 }
 
@@ -98,6 +162,8 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
 async function saveLead(payload) {
   try {
+    console.log('Enviando lead para Supabase:', payload);
+
     const response = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
       method: 'POST',
       headers: {
@@ -106,11 +172,20 @@ async function saveLead(payload) {
         'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
         'Prefer': 'return=representation'
       },
-      body: JSON.stringify([payload])
+      body: JSON.stringify(payload)
     });
-    return response.ok;
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Erro ao salvar lead:', response.status, errorText);
+      return false;
+    }
+
+    const data = await response.json();
+    console.log('Lead salvo com sucesso:', data);
+    return true;
   } catch (err) {
-    console.error(err);
+    console.error('Erro na requisição:', err);
     return false;
   }
 }
@@ -118,21 +193,43 @@ async function saveLead(payload) {
 // Event handlers for submission
 document.getElementById('enviarLead')?.addEventListener('click', async e => {
   e.preventDefault();
-  const lgpd = document.getElementById('lgpd');
-  if (lgpd && !lgpd.checked) {
-    alert('Autorize o contato (LGPD).');
+
+  // Validar passo 3
+  if (!validateStep(2)) {
     return;
   }
+
+  const lgpd = document.getElementById('lgpd');
+  if (lgpd && !lgpd.checked) {
+    alert('Por favor, autorize o contato conforme LGPD.');
+    lgpd.focus();
+    return;
+  }
+
   const payload = buildLeadPayload();
+
+  // Desabilita o botão para evitar duplo envio
+  e.target.disabled = true;
+  e.target.textContent = 'Enviando...';
+
   // Save to Supabase
   const ok = await saveLead(payload);
+
+  // Reabilita o botão
+  e.target.disabled = false;
+  e.target.textContent = 'Enviar';
+
   if (ok) {
-    alert('Recebemos sua solicitação. Retornaremos em até 15 min.');
+    alert('✅ Recebemos sua solicitação!\n\nRetornaremos em até 15 minutos.');
     track('submit_form');
-    // Optionally reset form
+    // Reset form
+    document.querySelectorAll('.leadbox input, .leadbox select').forEach(input => {
+      if (input.type !== 'checkbox') input.value = '';
+      else input.checked = false;
+    });
     showStep(0);
   } else {
-    alert('Falha ao enviar. Tente novamente ou envie pelo WhatsApp.');
+    alert('❌ Falha ao enviar.\n\nTente novamente ou envie pelo WhatsApp.');
   }
 });
 
