@@ -138,7 +138,7 @@ function buildWhatsAppText(payload) {
 }
 
 // WhatsApp number (include country and area code)
-const waNumber = '5522981544419';
+const waNumber = '5521964019743';
 
 function openWhatsApp(payload) {
   const text = buildWhatsAppText(payload);
